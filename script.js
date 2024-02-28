@@ -52,15 +52,16 @@ this.body.appendChild(reset)
 
 let gridSize = document.createElement('button')
 gridSize.classList.add('gridsize')
-gridSize.textContent = 'Change Gridsize'
+gridSize.textContent = 'Create Grid'
 this.body.appendChild(gridSize)
 
 let numberOfSquares;
 
 gridSize.addEventListener('click', function() {
+    gridSize.value = 'on'
     numberOfSquares = +prompt('Enter Grid Size')
-    let containerSize = 525 
-    gridResized = Math.floor((containerSize / numberOfSquares))
+    let containerSize = 525
+    gridResized = ((containerSize / numberOfSquares))
 
 
 for (let i = 0; i<numberOfSquares; i++) {
@@ -73,11 +74,16 @@ for (let i = 0; i<numberOfSquares; i++) {
     grid.style.height = gridResized + 'px'
     gridContain.appendChild(grid)
 
+    if (gridSize.value === 'on') {
+        gridSize.addEventListener('click', function() {
+            grid.style.width = '0px'
+            grid.style.height = '0px'
+        })
+    }
+
 
     reset.addEventListener('click', function() {
         grid.style.backgroundColor = '#d3d3d3'
-        grid.style.width = "0px"
-        grid.style.height = "0px"
     })
 
     basicColor.addEventListener('click', function() {
