@@ -22,9 +22,28 @@ const colors = [
     '#FF3361', '#33E5FF', '#FF5733', '#33FF57', '#5733FF'
 ];
 
+let note = document.createElement('p')
+note.textContent = 'Press "Basic" or "Rainbow" to start drawing'
+this.body.appendChild(note)
+
 let gridContain = document.createElement('div')
 gridContain.classList.add('container')
 document.body.appendChild(gridContain)
+
+let basicColor = document.createElement('button')
+basicColor.textContent = 'Basic'
+basicColor.classList.add('basiccolor')
+this.body.appendChild(basicColor)
+
+let rainbow = document.createElement('button')
+rainbow.classList.add('rainbow')
+rainbow.textContent = 'Rainbow Color'
+this.body.appendChild(rainbow)
+
+let erase = document.createElement('button')
+erase.textContent = 'Eraser'
+erase.classList.add('erase')
+this.body.appendChild(erase)
 
 let reset = document.createElement('button')
 reset.textContent = "Reset"
@@ -36,44 +55,78 @@ gridSize.classList.add('gridsize')
 gridSize.textContent = 'Change Gridsize'
 this.body.appendChild(gridSize)
 
+let numberOfSquares;
+
 gridSize.addEventListener('click', function() {
-    let gridDimensions = +prompt('Enter Grid Size')
-    
-})
+    numberOfSquares = +prompt('Enter Grid Size')
+    let containerSize = 525 
+    gridResized = Math.floor((containerSize / numberOfSquares))
 
 
+for (let i = 0; i<numberOfSquares; i++) {
+    for (let j = 0; j < numberOfSquares; j++) {
 
-
-for (let i = 0; i<256; i++) {
     let grid = document.createElement('div')
     grid.classList.add('grid')
     grid.style.backgroundColor = '#d3d3d3'
-    grid.style.width = '32px'
-    grid.style.height = '32px'
-    grid.style.border = ('solid')
+    grid.style.width = gridResized + 'px'
+    grid.style.height = gridResized + 'px'
     gridContain.appendChild(grid)
 
-    grid.addEventListener('mouseover', function() {
-        let randomIndex = Math.floor(Math.random()*colors.length)
-        let randomColor = colors[randomIndex]
-        grid.style.backgroundColor = randomColor
 
     reset.addEventListener('click', function() {
         grid.style.backgroundColor = '#d3d3d3'
+        grid.style.width = "0px"
+        grid.style.height = "0px"
     })
 
-
+    basicColor.addEventListener('click', function() {
+        basicColor.value = 'on'
+        if (basicColor.value === 'on') {
+            grid.addEventListener('mouseover', function() {
+            grid.style.backgroundColor = 'black'
+            })
+        }
     })
+
+    rainbow.addEventListener('click', function() {
+        rainbow.value = 'on'
+        if (rainbow.value === 'on') {
+            grid.addEventListener('mouseover', function() {
+            let randomIndex = Math.floor(Math.random()*colors.length)
+            let randomColor = colors[randomIndex]
+            grid.style.backgroundColor = randomColor
+            })
+        }
+    })
+
+    erase.addEventListener('click', function() {
+        erase.value = 'on'
+        if (erase.value === 'on') {
+        grid.addEventListener('mouseover', function() {
+            grid.style.backgroundColor = '#d3d3d3'
+        })
+    }
+})
+
+
+   
+
+
+    
+
 }
+    
+} 
 
 
 
 
-
-
+})
 
 
 
 
 
 })
+

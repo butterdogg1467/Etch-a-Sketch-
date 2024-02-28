@@ -8,20 +8,29 @@ body {
 .container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 620px;
-    max-height: 620px;
-    margin-top: 100px;
+    max-width: 525px;
+    max-height: 525px;
+    flex-grow: 0;
+    margin-top: 10px;
 }
 
-
-.reset {
-margin-top: 50px;
+.reset,
+.gridsize,
+.colorpicker,
+.basiccolor,
+.rainbow,
+.erase {
+margin-top: 10px;
 border-radius: 10px;
 border-style: solid;
 }
 
 .reset:hover,
-.gridsize:hover {
+.gridsize:hover,
+.colorpicker:hover,
+.basiccolor:hover,
+.rainbow:hover,
+.erase:hover {
     background-color: black;
     color: white;
 }
@@ -31,3 +40,4 @@ border-style: solid;
     border-radius: 10px;
     border-style: solid;
 }
+
