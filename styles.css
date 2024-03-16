@@ -19,7 +19,8 @@ body {
 .colorpicker,
 .basiccolor,
 .rainbow,
-.erase {
+.erase,
+.singleColor {
 margin-top: 10px;
 border-radius: 10px;
 border-style: solid;
@@ -30,7 +31,8 @@ border-style: solid;
 .colorpicker:hover,
 .basiccolor:hover,
 .rainbow:hover,
-.erase:hover {
+.erase:hover,
+.singleColor:hover {
     background-color: black;
     color: white;
 }
@@ -39,5 +41,16 @@ border-style: solid;
     margin-top: 10px;
     border-radius: 10px;
     border-style: solid;
+}
+
+.colorpick {
+    border: none;
+    background: none;
+    width: 50px;
+    height: 50px;
+}
+
+img {
+    margin-top: 25px
 }
 

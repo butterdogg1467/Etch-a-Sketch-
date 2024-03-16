@@ -30,10 +30,15 @@ let gridContain = document.createElement('div')
 gridContain.classList.add('container')
 document.body.appendChild(gridContain)
 
-let basicColor = document.createElement('button')
-basicColor.textContent = 'Basic'
-basicColor.classList.add('basiccolor')
-this.body.appendChild(basicColor)
+let colorPick = document.createElement('input')
+colorPick.type = 'color'
+document.body.appendChild(colorPick)
+colorPick.classList.add('colorpick')
+
+let singleColor = document.createElement('button')
+singleColor.classList.add('singleColor')
+singleColor.textContent = 'Single Color'
+this.body.appendChild(singleColor)
 
 let rainbow = document.createElement('button')
 rainbow.classList.add('rainbow')
@@ -56,6 +61,33 @@ gridSize.textContent = 'Create Grid'
 this.body.appendChild(gridSize)
 
 let numberOfSquares;
+let colorPicked;
+
+document.addEventListener('DOMContentLoaded', function() {
+    let numberOfSquares = 16
+
+    let gridContain = document.createElement('div');
+    gridContain.classList.add('container');
+    document.body.appendChild(gridContain);
+
+for (let i = 0; i<numberOfSquares; i++) {
+for (let j = 0; j < numberOfSquares; j++) {
+
+    let grid = document.createElement('div')
+    grid.classList.add('grid')
+    grid.style.backgroundColor = '#d3d3d3'
+    grid.style.width = '16px'
+    grid.style.height = '16px'
+    gridContain.appendChild(grid)
+
+    if (gridSize.value === 'on') {
+        gridSize.addEventListener('click', function() {
+            grid.style.width = '0px'
+            grid.style.height = '0px'
+        })
+    }}
+}}
+)
 
 gridSize.addEventListener('click', function() {
     gridSize.value = 'on'
@@ -82,28 +114,34 @@ for (let i = 0; i<numberOfSquares; i++) {
     }
 
 
+    singleColor.addEventListener('click', function (){
+        colorPicked = 'true'
+        if (colorPicked === 'true') {
+            grid.addEventListener('mouseover', function() {
+                grid.style.backgroundColor = colorPick.value
+            })
+        }
+    })
+
     reset.addEventListener('click', function() {
         grid.style.backgroundColor = '#d3d3d3'
     })
 
-    basicColor.addEventListener('click', function() {
-        basicColor.value = 'on'
-        if (basicColor.value === 'on') {
-            grid.addEventListener('mouseover', function() {
-            grid.style.backgroundColor = 'black'
-            })
-        }
+    colorPick.addEventListener('click', function () {
+        rainbow.value = 'off'
     })
+
+    
 
     rainbow.addEventListener('click', function() {
         rainbow.value = 'on'
         if (rainbow.value === 'on') {
             grid.addEventListener('mouseover', function() {
-            let randomIndex = Math.floor(Math.random()*colors.length)
+            let randomIndex = Math.floor(Math.random()*colorPick.value.length)
             let randomColor = colors[randomIndex]
             grid.style.backgroundColor = randomColor
-            })
-        }
+            }) 
+        } 
     })
 
     erase.addEventListener('click', function() {
