@@ -12,6 +12,7 @@ body {
     background-color: #AA090C;
     width: 100vw;
     height: 100vh;
+    overflow:hidden;
 }
 
 .container {
@@ -79,7 +80,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 1000px;
+    width: 1700px;
     margin-top: 1.5rem;
 }
 
